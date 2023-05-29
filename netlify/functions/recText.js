@@ -1,6 +1,6 @@
 exports.handler = async (event) => {
       try {
-        console.log(event)
+        console.log(event.body)
       return {
         statusCode: 200,
         body: ''
