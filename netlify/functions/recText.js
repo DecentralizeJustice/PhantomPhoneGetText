@@ -8,7 +8,6 @@ try {
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 })
   const collection = client.db("demo").collection("demo")
   // const docInfo = {_id: 69, messageArray: [] }
-  // const docInfo = JSON.parse(event.body)
   // await collection.insertOne(docInfo)
   await collection.updateOne(
     { _id: 69 },
