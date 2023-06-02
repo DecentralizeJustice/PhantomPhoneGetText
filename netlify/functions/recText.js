@@ -1,7 +1,7 @@
 const axios = require("axios")
 const mongoDBPassword = process.env.mongoDBPassword
 const mongoServerLocation = process.env.mongoServerLocation
-const { MongoClient, ServerApiVersion } = require('mongodb')
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
 const uri = "mongodb+srv://main:" + mongoDBPassword + "@"+ mongoServerLocation + "/?retryWrites=true&w=majority"
 exports.handler = async (event) => {
 try {
@@ -11,7 +11,7 @@ try {
   const docInfo = JSON.parse(event.body)
   // await collection.insertOne(doc)
   await collection.updateOne(
-    { _id: '64795846bbff92df43d432bb' },
+    { _id: ObjectId.toString('64795846bbff92df43d432bb') },
     { $push: { messageArray: { hi: true} } }
   )
   await client.close()
