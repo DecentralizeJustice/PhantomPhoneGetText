@@ -12,7 +12,7 @@ try {
   // await collection.insertOne(doc)
   await collection.updateOne(
     {"_id": '64795846bbff92df43d432bb' },
-    { $push: { "messageArray": docInfo } }
+    { $push: { messageArray: { hi: true} } }
   )
   await client.close()
   console.log('info entered')
