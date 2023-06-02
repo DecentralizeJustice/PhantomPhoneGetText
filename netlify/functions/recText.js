@@ -11,7 +11,7 @@ try {
   const docInfo = JSON.parse(event.body)
   // await collection.insertOne(doc)
   await collection.updateOne(
-    {"_id": '64795846bbff92df43d432bb' },
+    { _id: '64795846bbff92df43d432bb' },
     { $push: { messageArray: { hi: true} } }
   )
   await client.close()
