@@ -7,7 +7,7 @@ exports.handler = async (event) => {
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 })    
   try {
     const collection = client.db("demo").collection("demo")
-    const docInfo = event.body
+    const docInfo = JSON.parse(event.body)
     const doc = docInfo
     await collection.insertOne(doc)
     await client.close()
