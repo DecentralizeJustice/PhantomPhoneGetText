@@ -7,13 +7,13 @@ exports.handler = async (event) => {
 try {
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 })
   const collection = client.db("demo").collection("demo")
-  const docInfo = {_id: 69, messageArray: [] }
+  // const docInfo = {_id: 69, messageArray: [] }
   // const docInfo = JSON.parse(event.body)
-  await collection.insertOne(docInfo)
-/*   await collection.updateOne(
-    { _id: ObjectId.toString("64795846bbff92df43d432bb") },
-    { $push: { messageArray: { hi: true} } }
-  ) */
+  // await collection.insertOne(docInfo)
+  await collection.updateOne(
+    { _id: 69 },
+    { $push: { messageArray: JSON.parse(event.body) } }
+  )
   await client.close()
   console.log('info entered')
   return {
