@@ -5,7 +5,6 @@
   "author": "Donely Gunn <32291941+itsMikeLowrey@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.4.0",
     "mongodb": "^5.6.0"
   }
 }
