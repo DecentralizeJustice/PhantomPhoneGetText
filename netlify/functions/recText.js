@@ -6,14 +6,22 @@ const uri = "mongodb+srv://main:" + mongoDBPassword + "@"+ mongoServerLocation +
 exports.handler = async (event) => {
 try {
 
-  if (event.headers.specpassword !=== apiPassword) {
-    console.log('wrong password')
+  if (event.headers.specpassword === apiPassword) {
+    await addText(event)
+  }
+  else {
+    throw "Wrong Password"; 
+  }
+  } catch (error) {
+    console.log(error)
     return {
       statusCode: 500,
       body: ''
     }
   }
+}
 
+async function addText(event){
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 })
   const collection = client.db("demo").collection("demo")
   // const docInfo = {_id: 69, messageArray: [] }
@@ -28,12 +36,4 @@ try {
     statusCode: 200,
     body: ''
   }
-  } catch (error) {
-    console.log(error)
-    return {
-      statusCode: 500,
-      body: ''
-    }
-  }
-
 }
