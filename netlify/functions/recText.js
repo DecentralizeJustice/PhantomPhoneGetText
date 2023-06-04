@@ -4,7 +4,7 @@ const { MongoClient, ServerApiVersion } = require('mongodb')
 const uri = "mongodb+srv://main:" + mongoDBPassword + "@"+ mongoServerLocation + "/?retryWrites=true&w=majority"
 exports.handler = async (event) => {
 try {
-  console.log(JSON.stringify(req.headers))
+  console.log(event)
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 })
   const collection = client.db("demo").collection("demo")
   // const docInfo = {_id: 69, messageArray: [] }
