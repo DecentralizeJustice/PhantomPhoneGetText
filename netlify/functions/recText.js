@@ -4,15 +4,15 @@ const apiPassword = process.env.apiPassword
 const { MongoClient, ServerApiVersion } = require('mongodb')
 const uri = "mongodb+srv://main:" + mongoDBPassword + "@"+ mongoServerLocation + "/?retryWrites=true&w=majority"
 exports.handler = async (event) => {
-try {
-
-  if (event.headers.specpassword === apiPassword) {
-    await addText(event)
-  }
-  else {
-    throw "Wrong Password"; 
-  }
-  } catch (error) {
+  try {
+    if (event.headers.specpassword === apiPassword) {
+      await addText(event)
+    }
+    else {
+      throw "Wrong Password"
+    }
+  } 
+  catch (error) {
     console.log(error)
     return {
       statusCode: 500,
