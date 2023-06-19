@@ -9,14 +9,12 @@ exports.handler = async (event) => {
   try {
     if (event.headers.specpassword === apiPassword) {
       const phoneName = JSON.parse(event.body).phone
-      console.log(phoneName)
       //const docInfo = {_id: 69, messageArray: [] }
       // await collection.insertOne(docInfo)
       await collection.updateOne(
         { "phone" : phoneName },
         { $push: { messageArray: JSON.parse(event.body) } }
       )
-      console.log(event.body)
       return {
         statusCode: 200,
         body: ''
