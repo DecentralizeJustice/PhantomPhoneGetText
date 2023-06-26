@@ -13,7 +13,8 @@ exports.handler = async (event) => {
       // await collection.insertOne(docInfo)
       await collection.updateOne(
         { "phone" : phoneName },
-        { $push: { messageArray: JSON.parse(event.body) } }
+        { $push: { messageArray: JSON.parse(event.body) } },
+        { upsert: true }
       )
       return {
         statusCode: 200,

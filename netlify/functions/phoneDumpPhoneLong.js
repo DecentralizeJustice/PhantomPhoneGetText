@@ -9,7 +9,6 @@ exports.handler = async (event) => {
   try {
     if (event.headers.specpassword === apiPassword) {
       const phoneName = JSON.parse(event.body).phone
-      console.log(JSON.parse(event.body))
       //const docInfo = {_id: 69, messageArray: [] }
       // await collection.insertOne(docInfo)
       await collection.updateOne(
